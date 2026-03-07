@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_11774029db1530dfa8447878eb92e976 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+            top: 10px; right: 10px; width: 320px; height: auto; 
+            background-color: white; z-index:9999; font-size:14px;
+            border:2px solid grey; border-radius: 5px; padding: 15px;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.3);">
+    <h3 style="margin-top: 0; color: #1F4E78; text-align: center;">
+        Top 5 Estaciones por Tipo de Usuario
+    </h3>
+    <hr style="margin: 10px 0;">
+    <p style="margin: 8px 0;">
+        <i class="fa fa-star" style="color: red; font-size: 18px;"></i>
+        <b style="color: #FF6B6B;"> Usuarios Casuales</b>
+    </p>
+    <p style="margin: 2px 0 8px 25px; font-size: 12px; color: #666;">
+        Estaciones más populares entre usuarios ocasionales (turismo/recreación)
+    </p>
+    
+    <p style="margin: 8px 0;">
+        <i class="fa fa-certificate" style="color: lightblue; font-size: 18px;"></i>
+        <b style="color: #4ECDC4;"> Miembros Anuales</b>
+    </p>
+    <p style="margin: 2px 0 8px 25px; font-size: 12px; color: #666;">
+        Estaciones más populares entre miembros (commuting/trabajo)
+    </p>
+    
+    <hr style="margin: 10px 0;">
+    <p style="margin: 5px 0; font-size: 13px;"><b>Tamaño del círculo:</b></p>
+    <p style="margin: 2px 0; font-size: 12px;">● Grande = Top 1-3</p>
+    <p style="margin: 2px 0; font-size: 12px;">● Pequeño = Top 4-5</p>
+    
+    <hr style="margin: 10px 0;">
+    <p style="margin: 5px 0; font-size: 11px; color: #666; text-align: center;">
+        <i>Haz clic en los marcadores para ver detalles</i>
+    </p>
+</div>
+    
+            <div class="folium-map" id="map_11774029db1530dfa8447878eb92e976" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_11774029db1530dfa8447878eb92e976 = L.map(
+                "map_11774029db1530dfa8447878eb92e976",
+                {
+                    center: [41.88198, -87.62742],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3d1ebd91618450768d26e528e5dae70e = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3d1ebd91618450768d26e528e5dae70e.addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var marker_1dbf700c2514dbb6b8af9d1732aeec0c = L.marker(
+                [41.8781, -87.6298],
+                {
+}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var icon_725ae3e5f4c141ec5fffee6b3414a428 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_21a0536e37a9bbc6ddcb1520c4de0995 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_40ac379a7d1385046199deedc1da7cc1 = $(`<div id="html_40ac379a7d1385046199deedc1da7cc1" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h3 style="margin-bottom: 10px; color: #1F4E78;">🔴 HQ QR</h3>         <h4 style="margin: 5px 0; color: #FF6B6B;">             Top #1 estación de CASUAL         </h4>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 13px;"><b>Total de viajes:</b> 3,557</p>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;">             <span style="color: #FF6B6B; font-size: 16px;">●</span>              <b>Usuarios Casuales:</b> 3,556 (100.0%)         </p>         <p style="margin: 5px 0;">             <span style="color: #4ECDC4; font-size: 16px;">●</span>              <b>Miembros:</b> 1 (0.0%)         </p>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 11px; color: #666; font-style: italic;">             Zona turística/recreativa         </p>     </div>     </div>`)[0];
+                popup_21a0536e37a9bbc6ddcb1520c4de0995.setContent(html_40ac379a7d1385046199deedc1da7cc1);
+            
+        
+
+        marker_1dbf700c2514dbb6b8af9d1732aeec0c.bindPopup(popup_21a0536e37a9bbc6ddcb1520c4de0995)
+        ;
+
+        
+    
+    
+            marker_1dbf700c2514dbb6b8af9d1732aeec0c.bindTooltip(
+                `<div>
+                     HQ QR - 3,557 viajes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1dbf700c2514dbb6b8af9d1732aeec0c.setIcon(icon_725ae3e5f4c141ec5fffee6b3414a428);
+            
+    
+            var circle_marker_854d3ef2145bec3dee26c2a2c0913dde = L.circleMarker(
+                [41.8781, -87.6298],
+                {"bubblingMouseEvents": true, "color": "#FF6B6B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF6B6B", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var marker_e13c979794ca75756c2d4f65197519c5 = L.marker(
+                [41.8923, -87.612],
+                {
+}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var icon_b901e8e272c751e7b5fd43876251906c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_661f4b49004ddb958a78128a62b7ec0c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_553aef9327ec5538c16326691e733bbc = $(`<div id="html_553aef9327ec5538c16326691e733bbc" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h3 style="margin-bottom: 10px; color: #1F4E78;">🔴 Streeter Dr & Grand Ave</h3>         <h4 style="margin: 5px 0; color: #FF6B6B;">             Top #2 estación de CASUAL         </h4>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 13px;"><b>Total de viajes:</b> 4,533</p>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;">             <span style="color: #FF6B6B; font-size: 16px;">●</span>              <b>Usuarios Casuales:</b> 2,749 (60.6%)         </p>         <p style="margin: 5px 0;">             <span style="color: #4ECDC4; font-size: 16px;">●</span>              <b>Miembros:</b> 1,784 (39.4%)         </p>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 11px; color: #666; font-style: italic;">             Zona turística/recreativa         </p>     </div>     </div>`)[0];
+                popup_661f4b49004ddb958a78128a62b7ec0c.setContent(html_553aef9327ec5538c16326691e733bbc);
+            
+        
+
+        marker_e13c979794ca75756c2d4f65197519c5.bindPopup(popup_661f4b49004ddb958a78128a62b7ec0c)
+        ;
+
+        
+    
+    
+            marker_e13c979794ca75756c2d4f65197519c5.bindTooltip(
+                `<div>
+                     Streeter Dr & Grand Ave - 4,533 viajes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e13c979794ca75756c2d4f65197519c5.setIcon(icon_b901e8e272c751e7b5fd43876251906c);
+            
+    
+            var circle_marker_e1814f2d9d720940f445620c7668b7f8 = L.circleMarker(
+                [41.8923, -87.612],
+                {"bubblingMouseEvents": true, "color": "#FF6B6B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF6B6B", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var marker_ef5235527fd68014accdc04193daa2b5 = L.marker(
+                [41.8809, -87.6167],
+                {
+}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var icon_81dab4d16d35515258454ccfdeb474b7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_40faaf4220c8bd2bf50f712bc00636df = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_582a70ca6bb8cb2a22052aa4e6772a0d = $(`<div id="html_582a70ca6bb8cb2a22052aa4e6772a0d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h3 style="margin-bottom: 10px; color: #1F4E78;">🔴 Lake Shore Dr & Monroe St</h3>         <h4 style="margin: 5px 0; color: #FF6B6B;">             Top #3 estación de CASUAL         </h4>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 13px;"><b>Total de viajes:</b> 3,811</p>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;">             <span style="color: #FF6B6B; font-size: 16px;">●</span>              <b>Usuarios Casuales:</b> 2,732 (71.7%)         </p>         <p style="margin: 5px 0;">             <span style="color: #4ECDC4; font-size: 16px;">●</span>              <b>Miembros:</b> 1,079 (28.3%)         </p>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 11px; color: #666; font-style: italic;">             Zona turística/recreativa         </p>     </div>     </div>`)[0];
+                popup_40faaf4220c8bd2bf50f712bc00636df.setContent(html_582a70ca6bb8cb2a22052aa4e6772a0d);
+            
+        
+
+        marker_ef5235527fd68014accdc04193daa2b5.bindPopup(popup_40faaf4220c8bd2bf50f712bc00636df)
+        ;
+
+        
+    
+    
+            marker_ef5235527fd68014accdc04193daa2b5.bindTooltip(
+                `<div>
+                     Lake Shore Dr & Monroe St - 3,811 viajes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ef5235527fd68014accdc04193daa2b5.setIcon(icon_81dab4d16d35515258454ccfdeb474b7);
+            
+    
+            var circle_marker_bbae0ac66c27480a1b00eac093e6acea = L.circleMarker(
+                [41.8809, -87.6167],
+                {"bubblingMouseEvents": true, "color": "#FF6B6B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF6B6B", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var marker_60a4289b1ae48bc66d83c2930c33d1e4 = L.marker(
+                [41.8676, -87.614],
+                {
+}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var icon_9b9ecce3d83bb953d8744a1dcbe565da = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0ce352eac3d4f5eca486c1215e602f66 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a82dfe702f25e6bc1cc4ee43c30f6f02 = $(`<div id="html_a82dfe702f25e6bc1cc4ee43c30f6f02" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h3 style="margin-bottom: 10px; color: #1F4E78;">🔴 Shedd Aquarium</h3>         <h4 style="margin: 5px 0; color: #FF6B6B;">             Top #4 estación de CASUAL         </h4>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 13px;"><b>Total de viajes:</b> 2,899</p>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;">             <span style="color: #FF6B6B; font-size: 16px;">●</span>              <b>Usuarios Casuales:</b> 1,832 (63.2%)         </p>         <p style="margin: 5px 0;">             <span style="color: #4ECDC4; font-size: 16px;">●</span>              <b>Miembros:</b> 1,067 (36.8%)         </p>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 11px; color: #666; font-style: italic;">             Zona turística/recreativa         </p>     </div>     </div>`)[0];
+                popup_0ce352eac3d4f5eca486c1215e602f66.setContent(html_a82dfe702f25e6bc1cc4ee43c30f6f02);
+            
+        
+
+        marker_60a4289b1ae48bc66d83c2930c33d1e4.bindPopup(popup_0ce352eac3d4f5eca486c1215e602f66)
+        ;
+
+        
+    
+    
+            marker_60a4289b1ae48bc66d83c2930c33d1e4.bindTooltip(
+                `<div>
+                     Shedd Aquarium - 2,899 viajes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_60a4289b1ae48bc66d83c2930c33d1e4.setIcon(icon_9b9ecce3d83bb953d8744a1dcbe565da);
+            
+    
+            var circle_marker_aa947f85c06ec3598bbc65a9bb792d24 = L.circleMarker(
+                [41.8676, -87.614],
+                {"bubblingMouseEvents": true, "color": "#FF6B6B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF6B6B", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var marker_03ca5d24d178e5b10a163ecc9bbab085 = L.marker(
+                [41.8826, -87.6226],
+                {
+}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var icon_258462c222fae33caf7e175f737df6ca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_15db8ffb49c062a329783b8eff129c11 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_24a9f7ff7afd986fee0a80b223856fe6 = $(`<div id="html_24a9f7ff7afd986fee0a80b223856fe6" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h3 style="margin-bottom: 10px; color: #1F4E78;">🔴 Millennium Park</h3>         <h4 style="margin: 5px 0; color: #FF6B6B;">             Top #5 estación de CASUAL         </h4>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 13px;"><b>Total de viajes:</b> 3,796</p>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;">             <span style="color: #FF6B6B; font-size: 16px;">●</span>              <b>Usuarios Casuales:</b> 1,406 (37.0%)         </p>         <p style="margin: 5px 0;">             <span style="color: #4ECDC4; font-size: 16px;">●</span>              <b>Miembros:</b> 2,390 (63.0%)         </p>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 11px; color: #666; font-style: italic;">             Zona turística/recreativa         </p>     </div>     </div>`)[0];
+                popup_15db8ffb49c062a329783b8eff129c11.setContent(html_24a9f7ff7afd986fee0a80b223856fe6);
+            
+        
+
+        marker_03ca5d24d178e5b10a163ecc9bbab085.bindPopup(popup_15db8ffb49c062a329783b8eff129c11)
+        ;
+
+        
+    
+    
+            marker_03ca5d24d178e5b10a163ecc9bbab085.bindTooltip(
+                `<div>
+                     Millennium Park - 3,796 viajes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_03ca5d24d178e5b10a163ecc9bbab085.setIcon(icon_258462c222fae33caf7e175f737df6ca);
+            
+    
+            var circle_marker_dec548ef2393e33da90ebaa5ada3707c = L.circleMarker(
+                [41.8826, -87.6226],
+                {"bubblingMouseEvents": true, "color": "#FF6B6B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF6B6B", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var marker_163162d17003905690f11f0c8d66159e = L.marker(
+                [41.8794, -87.6397],
+                {
+}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var icon_698e9c7a00d5dd451db1321c339bf48c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "certificate",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4ebd54d4dda5d47a14a876ea3d30d0c9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2b07247ecb59738931dc99ff0024fa56 = $(`<div id="html_2b07247ecb59738931dc99ff0024fa56" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h3 style="margin-bottom: 10px; color: #1F4E78;">🔵 Canal St & Adams St</h3>         <h4 style="margin: 5px 0; color: #4ECDC4;">             Top #1 estación de MEMBER         </h4>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 13px;"><b>Total de viajes:</b> 14,155</p>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;">             <span style="color: #FF6B6B; font-size: 16px;">●</span>              <b>Usuarios Casuales:</b> 356 (2.5%)         </p>         <p style="margin: 5px 0;">             <span style="color: #4ECDC4; font-size: 16px;">●</span>              <b>Miembros:</b> 13,799 (97.5%)         </p>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 11px; color: #666; font-style: italic;">             Zona comercial/laboral         </p>     </div>     </div>`)[0];
+                popup_4ebd54d4dda5d47a14a876ea3d30d0c9.setContent(html_2b07247ecb59738931dc99ff0024fa56);
+            
+        
+
+        marker_163162d17003905690f11f0c8d66159e.bindPopup(popup_4ebd54d4dda5d47a14a876ea3d30d0c9)
+        ;
+
+        
+    
+    
+            marker_163162d17003905690f11f0c8d66159e.bindTooltip(
+                `<div>
+                     Canal St & Adams St - 14,155 viajes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_163162d17003905690f11f0c8d66159e.setIcon(icon_698e9c7a00d5dd451db1321c339bf48c);
+            
+    
+            var circle_marker_093c765b64215779d57d5bdb1b4dc19b = L.circleMarker(
+                [41.8794, -87.6397],
+                {"bubblingMouseEvents": true, "color": "#4ECDC4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4ECDC4", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var marker_ba0c6a2c7dca59979d907419d0d6dd57 = L.marker(
+                [41.8833, -87.6411],
+                {
+}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var icon_a66426fd90f65b3e34aab6e0cb2e0980 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "certificate",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fa1bfc29f2b77a81ae44401c09f51dba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_17bb30262ddc2d313cb49d8ef0fc6cde = $(`<div id="html_17bb30262ddc2d313cb49d8ef0fc6cde" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h3 style="margin-bottom: 10px; color: #1F4E78;">🔵 Clinton St & Washington Blvd</h3>         <h4 style="margin: 5px 0; color: #4ECDC4;">             Top #2 estación de MEMBER         </h4>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 13px;"><b>Total de viajes:</b> 13,640</p>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;">             <span style="color: #FF6B6B; font-size: 16px;">●</span>              <b>Usuarios Casuales:</b> 206 (1.5%)         </p>         <p style="margin: 5px 0;">             <span style="color: #4ECDC4; font-size: 16px;">●</span>              <b>Miembros:</b> 13,434 (98.5%)         </p>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 11px; color: #666; font-style: italic;">             Zona comercial/laboral         </p>     </div>     </div>`)[0];
+                popup_fa1bfc29f2b77a81ae44401c09f51dba.setContent(html_17bb30262ddc2d313cb49d8ef0fc6cde);
+            
+        
+
+        marker_ba0c6a2c7dca59979d907419d0d6dd57.bindPopup(popup_fa1bfc29f2b77a81ae44401c09f51dba)
+        ;
+
+        
+    
+    
+            marker_ba0c6a2c7dca59979d907419d0d6dd57.bindTooltip(
+                `<div>
+                     Clinton St & Washington Blvd - 13,640 viajes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ba0c6a2c7dca59979d907419d0d6dd57.setIcon(icon_a66426fd90f65b3e34aab6e0cb2e0980);
+            
+    
+            var circle_marker_9fc1e599c26f72afad422d528e7c8817 = L.circleMarker(
+                [41.8833, -87.6411],
+                {"bubblingMouseEvents": true, "color": "#4ECDC4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4ECDC4", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var marker_8a103be4ca7ed5f2c173267e2422bcca = L.marker(
+                [41.882, -87.641],
+                {
+}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var icon_108faeefee8b8233dd5ea86cd6e40b6e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "certificate",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_becbaafc4aced567ba12be01d9e23b9a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f6f61c96d7e621319adb7beccb8691b6 = $(`<div id="html_f6f61c96d7e621319adb7beccb8691b6" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h3 style="margin-bottom: 10px; color: #1F4E78;">🔵 Clinton St & Madison St</h3>         <h4 style="margin: 5px 0; color: #4ECDC4;">             Top #3 estación de MEMBER         </h4>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 13px;"><b>Total de viajes:</b> 13,362</p>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;">             <span style="color: #FF6B6B; font-size: 16px;">●</span>              <b>Usuarios Casuales:</b> 471 (3.5%)         </p>         <p style="margin: 5px 0;">             <span style="color: #4ECDC4; font-size: 16px;">●</span>              <b>Miembros:</b> 12,891 (96.5%)         </p>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 11px; color: #666; font-style: italic;">             Zona comercial/laboral         </p>     </div>     </div>`)[0];
+                popup_becbaafc4aced567ba12be01d9e23b9a.setContent(html_f6f61c96d7e621319adb7beccb8691b6);
+            
+        
+
+        marker_8a103be4ca7ed5f2c173267e2422bcca.bindPopup(popup_becbaafc4aced567ba12be01d9e23b9a)
+        ;
+
+        
+    
+    
+            marker_8a103be4ca7ed5f2c173267e2422bcca.bindTooltip(
+                `<div>
+                     Clinton St & Madison St - 13,362 viajes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8a103be4ca7ed5f2c173267e2422bcca.setIcon(icon_108faeefee8b8233dd5ea86cd6e40b6e);
+            
+    
+            var circle_marker_a140b65af73e0b70438bea449f9a8786 = L.circleMarker(
+                [41.882, -87.641],
+                {"bubblingMouseEvents": true, "color": "#4ECDC4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4ECDC4", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var marker_f2fc5c4e29140f5ef22c55d0e9bb1da7 = L.marker(
+                [41.8892, -87.6383],
+                {
+}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var icon_4dd5134fb5808fa97899a9299c048c06 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "certificate",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dbea18547bfcc07b7ada2ef401965e2a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9b74cef0d62e01a0ea87d43a587ef6d6 = $(`<div id="html_9b74cef0d62e01a0ea87d43a587ef6d6" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h3 style="margin-bottom: 10px; color: #1F4E78;">🔵 Kingsbury St & Kinzie St</h3>         <h4 style="margin: 5px 0; color: #4ECDC4;">             Top #4 estación de MEMBER         </h4>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 13px;"><b>Total de viajes:</b> 9,021</p>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;">             <span style="color: #FF6B6B; font-size: 16px;">●</span>              <b>Usuarios Casuales:</b> 301 (3.3%)         </p>         <p style="margin: 5px 0;">             <span style="color: #4ECDC4; font-size: 16px;">●</span>              <b>Miembros:</b> 8,720 (96.7%)         </p>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 11px; color: #666; font-style: italic;">             Zona comercial/laboral         </p>     </div>     </div>`)[0];
+                popup_dbea18547bfcc07b7ada2ef401965e2a.setContent(html_9b74cef0d62e01a0ea87d43a587ef6d6);
+            
+        
+
+        marker_f2fc5c4e29140f5ef22c55d0e9bb1da7.bindPopup(popup_dbea18547bfcc07b7ada2ef401965e2a)
+        ;
+
+        
+    
+    
+            marker_f2fc5c4e29140f5ef22c55d0e9bb1da7.bindTooltip(
+                `<div>
+                     Kingsbury St & Kinzie St - 9,021 viajes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f2fc5c4e29140f5ef22c55d0e9bb1da7.setIcon(icon_4dd5134fb5808fa97899a9299c048c06);
+            
+    
+            var circle_marker_7b0c389467d0a9a849f8946bf01332c7 = L.circleMarker(
+                [41.8892, -87.6383],
+                {"bubblingMouseEvents": true, "color": "#4ECDC4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4ECDC4", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var marker_78c18d1fdc95380a1f0bc66182ed770f = L.marker(
+                [41.8844, -87.619],
+                {
+}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var icon_253bce0232333b774dbf056ce487327b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "certificate",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_676cbcece96bfeeda6772c298a04a9ef = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5b9a2345d03a616b29674d4ba9b64513 = $(`<div id="html_5b9a2345d03a616b29674d4ba9b64513" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 280px;">         <h3 style="margin-bottom: 10px; color: #1F4E78;">🔵 Columbus Dr & Randolph St</h3>         <h4 style="margin: 5px 0; color: #4ECDC4;">             Top #5 estación de MEMBER         </h4>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 13px;"><b>Total de viajes:</b> 9,080</p>         <hr style="margin: 5px 0;">         <p style="margin: 5px 0;">             <span style="color: #FF6B6B; font-size: 16px;">●</span>              <b>Usuarios Casuales:</b> 565 (6.2%)         </p>         <p style="margin: 5px 0;">             <span style="color: #4ECDC4; font-size: 16px;">●</span>              <b>Miembros:</b> 8,515 (93.8%)         </p>         <hr style="margin: 10px 0;">         <p style="margin: 5px 0; font-size: 11px; color: #666; font-style: italic;">             Zona comercial/laboral         </p>     </div>     </div>`)[0];
+                popup_676cbcece96bfeeda6772c298a04a9ef.setContent(html_5b9a2345d03a616b29674d4ba9b64513);
+            
+        
+
+        marker_78c18d1fdc95380a1f0bc66182ed770f.bindPopup(popup_676cbcece96bfeeda6772c298a04a9ef)
+        ;
+
+        
+    
+    
+            marker_78c18d1fdc95380a1f0bc66182ed770f.bindTooltip(
+                `<div>
+                     Columbus Dr & Randolph St - 9,080 viajes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_78c18d1fdc95380a1f0bc66182ed770f.setIcon(icon_253bce0232333b774dbf056ce487327b);
+            
+    
+            var circle_marker_8eabe2cac4db444260b3282aee710e1d = L.circleMarker(
+                [41.8844, -87.619],
+                {"bubblingMouseEvents": true, "color": "#4ECDC4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4ECDC4", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var poly_line_ed807ea9329afea24252799137cc2de4 = L.polyline(
+                [[41.8781, -87.6298], [41.8923, -87.612], [41.8809, -87.6167], [41.8676, -87.614], [41.8826, -87.6226]],
+                {"bubblingMouseEvents": true, "color": "#FF6B6B", "dashArray": "5, 10", "dashOffset": null, "fill": false, "fillColor": "#FF6B6B", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+    
+            var poly_line_26a74cdd206128e906ae92f55b55a7e3 = L.polyline(
+                [[41.8794, -87.6397], [41.8833, -87.6411], [41.882, -87.641], [41.8892, -87.6383], [41.8844, -87.619]],
+                {"bubblingMouseEvents": true, "color": "#4ECDC4", "dashArray": "5, 10", "dashOffset": null, "fill": false, "fillColor": "#4ECDC4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_11774029db1530dfa8447878eb92e976);
+        
+</script>
+</html>
